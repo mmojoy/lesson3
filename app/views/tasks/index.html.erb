@@ -1,0 +1,33 @@
+<header>
+  <div class="container">
+    <div class="row m-auto">
+      <h1>Tascs</h1>
+      <hr>
+      <div class="new-task"><%= link_to 'New Task', new_task_path %></div>
+      <hr>
+        <table class="task-table">
+          <thead>
+          <tr>
+            <th class="th-update">Title</th>
+            <th class="th-update">Priority</th>
+            <th class="th-update">Status</th>
+            <th colspan="3"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @tasks.each do |task| %>
+              <tr>
+                <td class="td1"><%= task.title %></td>
+                <td class="td1"><%= task.priority %></td>
+                <td class="td1"><%= task.status %></td>
+                <td class="td2"><%= link_to 'Show', task %></td>
+                <td class="td2"><%= link_to 'Edit', edit_task_path(task) %></td>
+                <td class="td2"><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <div class="pages"><%= will_paginate %></div>
+    </div>
+  </div>
+</header>
